@@ -1,15 +1,9 @@
 import { Text, View, StyleSheet, Button } from "react-native";
 
-const Login = ({ navigation }) => {
+const Topp = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Login Screen</Text>
-      <Button
-        title="Login"
-        onPress={() => {
-          navigation.navigate("TabNav");
-        }}
-      />
+      <Text>This is the Topp page</Text>
     </View>
   );
 };
@@ -23,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Topp;

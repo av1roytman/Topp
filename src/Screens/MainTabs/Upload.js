@@ -1,15 +1,9 @@
 import { Text, View, StyleSheet, Button } from "react-native";
 
-const Login = ({ navigation }) => {
+const Upload = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Login Screen</Text>
-      <Button
-        title="Login"
-        onPress={() => {
-          navigation.navigate("TabNav");
-        }}
-      />
+      <Text>This is the Upload page</Text>
     </View>
   );
 };
@@ -23,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Upload;
