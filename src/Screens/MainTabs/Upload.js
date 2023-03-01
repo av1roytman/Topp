@@ -1,19 +1,18 @@
-import { Text, View, StyleSheet, Button } from "react-native";
+import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
+import Recording from './Components/Recording';
 
 const Upload = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text>This is the Upload page</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Recording/>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#ffa",
   },
 });
 
