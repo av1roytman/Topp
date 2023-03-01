@@ -2,9 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    username: "",
-    password: "",
-    profilePicUri: "",
+    username: "test",
+    password: "test",
+    profilePicUri: require("../assets/test.jpg"),
+    myListings: [
+      {
+        id: "1",
+        uri: require("../assets/test.jpg"),
+        description: "testing description",
+      },
+      {
+        id: "2",
+        uri: require("../assets/test.jpg"),
+        description: "another test description",
+      },
+    ],
   },
   reducers: {
     setUsername: (state, action) => {
