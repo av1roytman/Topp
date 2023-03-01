@@ -11,8 +11,9 @@ import {
   Pressable,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import GridListing from "../../Components/GridListing";
 import { setUsername, setPassword } from "../../redux/userSlice";
+import Colors from "../../Colors";
+import GridPost from "../../Components/GridPost";
 
 const Profile = () => {
   const navigation = useNavigation;
@@ -69,7 +70,7 @@ const Profile = () => {
             contentContainerStyle={styles.flatList}
             scrollEnabled={false}
             data={myListings}
-            renderItem={({ item }) => <GridListing listing={item} />}
+            renderItem={({ item }) => <GridPost listing={item} />}
           />
         </View>
       </ScrollView>
@@ -119,6 +120,8 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     borderRadius: 5,
     margin: 5,
+    backgroundColor: Colors.greyBox,
+    borderColor: Colors.greyBox,
   },
   container: {
     width: "100%",
@@ -149,10 +152,12 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "flex-start",
     justifyContent: "center",
+    borderBottomWidth: 1,
   },
   usernameText: {
-    marginLeft: 20,
+    marginLeft: 40,
     fontSize: 18,
+    fontWeight: "600",
   },
   followersContainer: {
     width: "65%",

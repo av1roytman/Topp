@@ -11,9 +11,10 @@ import {
   Pressable,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import GridListing from "../../Components/GridListing";
 import Message from "../../Components/Message";
 import { setUsername, setPassword } from "../../redux/userSlice";
+import { AntDesign } from "@expo/vector-icons";
+import Colors from "../../Colors";
 
 const Inbox = () => {
   const navigation = useNavigation;
@@ -23,9 +24,14 @@ const Inbox = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
-        <Image style={styles.unreadIcon}></Image>
+        <Text style={styles.unreadIcon}>3</Text>
         <Text style={styles.usernameText}>{username}</Text>
-        <Image style={styles.composeIcon}></Image>
+        <AntDesign
+          name="form"
+          size={24}
+          color="black"
+          style={styles.composeIcon}
+        />
       </View>
       <ScrollView contentContainerStyle={styles.body}>
         <Message />
@@ -59,12 +65,18 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   unreadIcon: {
-    position: "absolute",
-    left: 20,
+    position: "relative",
     borderWidth: 1,
-    width: 30,
-    height: 30,
-    borderRadius: 50,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderColor: Colors.errorRed,
+    color: Colors.white,
+    textAlign: "center",
+    paddingTop: 1,
+    backgroundColor: Colors.errorRed,
+    overflow: "hidden",
+    margin: 10,
   },
   bio: {
     marginLeft: 10,
@@ -95,21 +107,10 @@ const styles = StyleSheet.create({
   composeIcon: {
     position: "absolute",
     right: 30,
-    borderWidth: 1,
-    width: 30,
-    height: 30,
-    borderRadius: 50,
   },
   container: {
     width: "100%",
     height: "100%",
-  },
-  nameText: {
-    fontWeight: "600",
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
   },
 
   numbers: {
@@ -129,12 +130,11 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     flexDirection: "row",
+    borderBottomWidth: 1,
   },
   usernameText: {
     fontSize: 18,
-    position: "absolute",
-    left: 60,
-    bottom: 15,
+    fontWeight: "600",
   },
   followersContainer: {
     width: "65%",

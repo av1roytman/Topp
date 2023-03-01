@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { useSelector, useDispatch } from "react-redux";
 
-function GridListing(props) {
+function GridPost(props) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GridListing;
+export default GridPost;

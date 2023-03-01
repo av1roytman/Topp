@@ -5,7 +5,7 @@ export const userSlice = createSlice({
     username: "test",
     password: "test",
     profilePicUri: require("../assets/test.jpg"),
-    myListings: [
+    myPosts: [
       {
         id: "1",
         uri: require("../assets/test.jpg"),

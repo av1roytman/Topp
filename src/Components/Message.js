@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     aspectRatio: 6,
-    borderWidth: "1",
+    borderBottomWidth: "1",
     flexDirection: "row",
     alignItems: "center",
   },

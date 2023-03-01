@@ -1,16 +1,24 @@
-import { Text, View, StyleSheet, Button, TextInput } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  TextInput,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 import { setUsername, setPassword } from "../redux/userSlice";
 import { useState } from "react";
+import Colors from "../Colors";
 
 const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [usernameText, setUsernameText] = useState("TestUsername");
-  const [passwordText, setPasswordText] = useState("TestPassword");
+  const [usernameText, setUsernameText] = useState("");
+  const [passwordText, setPasswordText] = useState("");
 
   const login = () => {
     dispatch(setPassword(passwordText));
@@ -19,12 +27,10 @@ const Login = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.topBar}>
-        <Text>Welcome!</Text>
-        <Text>Login Below</Text>
-      </View>
+      <View style={styles.topBar}></View>
 
       <View style={styles.body}>
+        <Text style={styles.logo}>Topp</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter username"
@@ -38,13 +44,22 @@ const Login = () => {
           value={passwordText}
           onChangeText={setPasswordText}
         />
-        <Button title="Login" onPress={login} />
+        <Text style={{ color: Colors.linkText, paddingLeft: 200 }}>
+          Forgot Password?
+        </Text>
+        <Pressable style={styles.login} onPress={login}>
+          <Text style={styles.loginText}>Login</Text>
+        </Pressable>
+
+        <Pressable onPress={() => navigation.navigate("Login")}></Pressable>
       </View>
       <View style={styles.bottomBar}>
-        <Button
-          title="Don't have an account? Create one!"
-          onPress={() => navigation.navigate("Login")}
-        />
+        <Pressable onPress={() => navigation.navigate("Login")}>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={{ color: Colors.Black }}>Don't have an account? </Text>
+            <Text style={{ color: Colors.linkText }}>Create One!</Text>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -54,7 +69,6 @@ const styles = StyleSheet.create({
   body: {
     height: "80%",
     width: "100%",
-    justifyContent: "center",
     alignItems: "center",
   },
   bottomBar: {
@@ -70,17 +84,48 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   input: {
-    width: "60%",
+    width: "80%",
+    height: "7%",
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 5,
+    borderColor: Colors.greyBox,
     padding: 5,
     margin: 10,
+  },
+  logo: {
+    fontSize: 50,
+    fontWeight: "600",
+    borderWidth: 1,
+    borderRadius: 35,
+    paddingBottom: 5,
+    paddingTop: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: Colors.greyBox,
+    borderColor: Colors.greyBox,
+    overflow: "hidden",
+    color: Colors.white,
+    margin: 80,
   },
   topBar: {
     height: "10%",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  login: {
+    width: "80%",
+    height: "7%",
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: Colors.linkText,
+    backgroundColor: Colors.linkText,
+    justifyContent: "center",
+    margin: 50,
+    alignItems: "center",
+  },
+  loginText: {
+    color: Colors.white,
   },
 });
 
