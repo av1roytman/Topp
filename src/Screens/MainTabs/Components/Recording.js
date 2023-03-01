@@ -5,6 +5,7 @@ import { Video } from 'expo-av';
 import { shareAsync } from 'expo-sharing';
 import * as MediaLibrary from 'expo-media-library';
 import { Icon } from '@rneui/themed';
+import Colors from '../../../Colors';
 
 const Recording = () => {
   let cameraRef = useRef();
@@ -67,26 +68,49 @@ const Recording = () => {
     };
 
     return (
-      <View style={styles.container}>
-        <Pressable
-          style={styles.container}
-          onPress={() =>
-            status.isPlaying ? videoPlayback.current.pauseAsync() : videoPlayback.current.playAsync()
-          }
+      <Pressable
+        style={styles.container}
+        onPress={() =>
+          status.isPlaying ? videoPlayback.current.pauseAsync() : videoPlayback.current.playAsync()
+        }
+      >
+        <Video
+          ref={videoPlayback}
+          style={styles.video}
+          source={{uri: video.uri}}
+          resizeMode="cover"
+          isLooping
+          shouldPlay
+          onPlaybackStatusUpdate={status => setStatus(() => status)}
         >
-          <Video
-            ref={videoPlayback}
-            style={styles.video}
-            source={{uri: video.uri}}
-            resizeMode='contain'
-            isLooping
-            onPlaybackStatusUpdate={status => setStatus(() => status)}
-          />
-        </Pressable>
-        <Button title="Share" onPress={shareVideo} />
-        {hasMediaLibraryPermission ? <Button title="Save" onPress={saveVideo} /> : undefined}
-        <Button title="Discard" onPress={() => setVideo(undefined)} />
-      </View>
+          <View style={styles.topVideo}>
+          </View>
+          <View style={styles.bottomVideo}>
+            <Icon 
+              name="trash-2"
+              size={35}
+              type="feather"
+              color={Colors.lightGrey}
+              onPress={() => setVideo(undefined)}
+            />
+            {hasMediaLibraryPermission ? 
+              <Icon
+                name="download"
+                size={35}
+                type="feather"
+                color={Colors.lightGrey}
+                onPress={saveVideo}
+              /> : undefined}
+            <Icon 
+              name="share"
+              size={35}
+              type="feather"
+              color={Colors.lightGrey}
+              onPress={shareVideo}
+            />
+          </View>
+        </Video>
+      </Pressable>
     );
   }
 
@@ -98,8 +122,8 @@ const Recording = () => {
       <View style={styles.buttonContainer}>
         {/* <Button title={isRecording ? "Stop Recording" : "Record Video"} onPress={isRecording ? stopRecording : recordVideo} /> */}
         <Icon
-          raised
           name="circle"
+          size={50}
           type="material"
           color={isRecording? "#f50" : "#fff"}
           onPress={isRecording ? stopRecording : recordVideo}
@@ -114,15 +138,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    backgroundColor: "rgba(0,0,0,0)",
+    backgroundColor: "rgba(a,3,a,100)",
     alignSelf: "center",
   },
   topCamera: {
     height: "90%"
   },
+  topVideo: {
+    height: "93%",
+  },
+  bottomVideo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    zIndex: 1,
+    marginLeft: 10,
+    marginRight: 10
+  },
   video: {
     flex: 1,
-    alignSelf: "stretch"
   }
 });
 
