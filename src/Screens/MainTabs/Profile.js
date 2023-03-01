@@ -19,7 +19,7 @@ const Profile = () => {
   const navigation = useNavigation;
   const username = useSelector((state) => state.user.username);
   const profilePicUri = useSelector((state) => state.user.profilePicUri);
-  const myListings = useSelector((state) => state.user.myListings);
+  const myListings = useSelector((state) => state.user.myPosts);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     borderRadius: 5,
     margin: 5,
-    backgroundColor: Colors.greyBox,
-    borderColor: Colors.greyBox,
+    backgroundColor: Colors.lightGrey,
+    borderColor: Colors.lightGrey,
   },
   container: {
     width: "100%",
