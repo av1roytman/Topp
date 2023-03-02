@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 import { Pressable, View, StyleSheet } from "react-native";
 import { Video, AVPlaybackStatus } from 'expo-av';
+import { useSelector, useDispatch } from "react-redux";
 
 const VideoBox = ( props ) => {
-        const video = useRef(null);
-        const [status, setStatus] = useState({});
+    const video = useRef(null);
+    const [status, setStatus] = useState({});
+    const topVideoUri = useSelector((state) => state.video.topVideoUri);
     return (
         <View style={props.styles.body}>
             <Pressable
@@ -16,7 +18,7 @@ const VideoBox = ( props ) => {
                     ref={video}
                     style={props.styles.video}
                     source={{
-                    uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                    uri: topVideoUri,
                     }}
                     useNativeControls={false}
                     resizeMode="contain"
