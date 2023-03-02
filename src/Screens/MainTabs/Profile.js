@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 import {
   Text,
   View,
@@ -23,7 +23,11 @@ const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
-        <Text style={styles.usernameText}>{username}</Text>
+        <Text 
+          style={styles.usernameText}
+        >
+          {username}
+        </Text>
       </View>
       <ScrollView contentContainerStyle={styles.body}>
         <View style={styles.accountInfo}>
