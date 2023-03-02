@@ -10,8 +10,8 @@ import {
   FlatList,
   Pressable,
 } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import { setUsername, setPassword } from "../../redux/userSlice";
+import {useSelector, useDispatch} from "react-redux";
+import {setUsername, setPassword} from "../../redux/userSlice";
 import Colors from "../../Colors";
 import GridPost from "../../Components/GridPost";
 
